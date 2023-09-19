@@ -1,0 +1,83 @@
+# пример GET запроса
+
+GET http://127.0.0.1:8000/owners/
+
+###
+
+GET http://127.0.0.1:8000/cats/
+
+###
+
+POST http://127.0.0.1:8000/cats/
+Content-Type: application/json
+
+{
+    "name": "Goga",
+    "color": "Grey",
+    "birth_year": 12.2022
+} 
+
+###
+# Запрос на добавление кота с хозяином
+POST http://127.0.0.1:8000/cats/
+Content-Type: application/json
+
+{
+    "name": "Бегемот",
+    "color": "Черный",
+    "birth_year": 1900,
+    "owner": 1
+} 
+
+###
+# Запрос на добавление оунера
+POST http://127.0.0.1:8000/owners/
+Content-Type: application/json
+
+{
+    "first_name": "Pablo",
+    "last_name": "Picasso"
+} 
+
+###
+# ЗАгружаем пакетно, если serializer = CatSerializer(data=request.data, many=True)
+POST http://127.0.0.1:8000/cats/
+Content-Type: application/json
+
+[
+    {
+        "name": "Стёп2",
+        "color": "белый",
+        "birth_year": 1971
+    },
+    {
+        "name": "Мурка2",
+        "color": "рыжий",
+        "birth_year": 2010
+    },
+    {
+        "name": "Пушок2",
+        "color": "чёрный",
+        "birth_year": 2018
+    }
+] 
+
+###
+# работаем с обновлением объекта через cat_update
+POST http://127.0.0.1:8000/cat_update/1/
+Content-Type: application/json
+
+{
+    "name": "Pushok",
+    "color": "WhiteHouse",
+    "birth_year": 2019
+} 
+
+###
+# работаем с обновлением объекта через cat_patch
+PATCH http://127.0.0.1:8000/cats/1/
+Content-Type: application/json
+
+{
+    "color": "WhiteBlack"
+} 

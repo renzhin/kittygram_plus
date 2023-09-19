@@ -4,7 +4,7 @@ GET http://127.0.0.1:8000/owners/
 
 ###
 
-GET http://127.0.0.1:8000/cats/
+GET http://127.0.0.1:8000/cats/1/
 
 ###
 
@@ -23,10 +23,14 @@ POST http://127.0.0.1:8000/cats/
 Content-Type: application/json
 
 {
-    "name": "Бегемот",
-    "color": "Черный",
-    "birth_year": 1900,
-    "owner": 1
+    "name": "Барсик",
+    "color": "White",
+    "birth_year": 2017,
+    "owner": 1,
+    "achievements": [
+        {"name": "поймал мышку"},
+        {"name": "разбил вазу"}
+    ]
 } 
 
 ###
@@ -35,8 +39,8 @@ POST http://127.0.0.1:8000/owners/
 Content-Type: application/json
 
 {
-    "first_name": "Pablo",
-    "last_name": "Picasso"
+    "first_name": "Hugo",
+    "last_name": "Basckerwill"
 } 
 
 ###

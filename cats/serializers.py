@@ -7,7 +7,7 @@ from .models import Achievement, AchievementCat, Cat, Owner, CHOICES
 
 
 class AchievementSerializer(serializers.ModelSerializer):
-    achievement_name = serializers.CharField(source='name')
+    achievement_name = serializers.CharField(source='name') # read_only=True
 
     class Meta:
         model = Achievement
@@ -86,6 +86,14 @@ class CatSerializer(serializers.ModelSerializer):
 
     def get_age(self, obj):
         return dt.datetime.now().year - obj.birth_year
+
+
+class CatListSerializer(serializers.ModelSerializer):
+    color = serializers.ChoiceField(choices=CHOICES)
+
+    class Meta:
+        model = Cat
+        fields = ('id', 'name', 'color') 
 
 
 class OwnerSerializer(serializers.ModelSerializer):

@@ -1,6 +1,8 @@
+import datetime as dt
+
 from rest_framework import serializers
 
-from .models import Cat, Owner, Achievement, AchievementCat
+from .models import Achievement, AchievementCat, Cat, Owner
 
 
 class AchievementSerializer(serializers.ModelSerializer):
@@ -13,6 +15,7 @@ class AchievementSerializer(serializers.ModelSerializer):
 class CatSerializer(serializers.ModelSerializer):
     # owner = serializers.StringRelatedField(read_only=True)
     achievements = AchievementSerializer(many=True, required=False)  # Убрали read_only=True
+    age = serializers.SerializerMethodField()
 
     class Meta:
         model = Cat
@@ -49,12 +52,15 @@ class CatSerializer(serializers.ModelSerializer):
     #     for achievement in achievements:
     #         # Создадим новую запись или получим существующий экземпляр из БД
     #         current_achievement, status = Achievement.objects.get_or_create(
-    #             **achievement)
+    #             **achievement, [])
     #         # Поместим ссылку на каждое достижение во вспомогательную таблицу
     #         # Не забыв указать к какому котику оно относится
     #         AchievementCat.objects.create(
     #             achievement=current_achievement, cat=cat)
     #     return cat
+
+    def get_age(self, obj):
+        return dt.datetime.now().year - obj.birth_year
 
 
 class OwnerSerializer(serializers.ModelSerializer):

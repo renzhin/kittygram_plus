@@ -1,6 +1,6 @@
 # пример GET запроса
 
-GET http://127.0.0.1:8000/owners/
+GET http://127.0.0.1:8000/cats/
 
 ###
 
@@ -12,10 +12,24 @@ POST http://127.0.0.1:8000/cats/
 Content-Type: application/json
 
 {
-    "name": "Goga",
+    "name": "Goga3",
     "color": "Grey",
-    "birth_year": 12.2022
+    "birth_year": 2022,
+    "owner": 1
 } 
+
+###
+# Добавляем котика с HEX-овым цветом.
+POST http://127.0.0.1:8000/cats/
+Content-Type: application/json
+
+{
+    "name": "Хёксик",
+    "color": "Black",
+    "birth_year": 2022,
+    "owner": 1
+} 
+
 
 ###
 # Запрос на добавление кота с хозяином

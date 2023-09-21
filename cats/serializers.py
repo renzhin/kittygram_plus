@@ -1,9 +1,16 @@
 import datetime as dt
 
+# from djoser.serializers import UserSerializer
 # import webcolors
 from rest_framework import serializers
 
-from .models import Achievement, AchievementCat, Cat, Owner, CHOICES
+from .models import CHOICES, Achievement, AchievementCat, Cat, Owner
+
+
+# class CustomUserSerializer(UserSerializer):
+#     class Meta:
+#         model = User
+#         fields = ('email', 'id', 'username', 'first_name', 'last_name')
 
 
 class AchievementSerializer(serializers.ModelSerializer):

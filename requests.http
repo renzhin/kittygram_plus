@@ -1,4 +1,27 @@
-# Получение токена
+# Применение JWT
+
+POST http://127.0.0.1:8000/auth/users/
+Content-Type: application/json
+
+{
+    "username": "buba",
+    "password": "buba"
+}
+
+
+###
+# Применение JWT - получение токена
+
+POST http://127.0.0.1:8000/auth/jwt/create/
+Content-Type: application/json
+
+{
+    "username": "buba",
+    "password": "buba"
+}
+
+
+### Получение токена
 
 POST http://127.0.0.1:8000/api-token-auth/
 Content-Type: application/json
@@ -15,7 +38,17 @@ Content-Type: application/json
 GET http://127.0.0.1:8000/cats/
 
 ###
+#пример GET запроса с JWT-токеном
+GET http://127.0.0.1:8000/cats/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk1MzY0OTMwLCJqdGkiOiI2M2MyZDk3YTJjNWU0ZDg5OWUzYjM5NjYxODFhYzZiOSIsInVzZXJfaWQiOjN9.9i0QyGjEmWwNKKR2v-2MxoBnL3a5VUD4rcBrIppos20
 
+###
+#пример GET запроса с токеном
+GET http://127.0.0.1:8000/cats/
+Authorization: Token ac54823c56a67e1ae7f50af26fc3319e306bac84
+
+
+###
 GET http://127.0.0.1:8000/cats/1/
 
 ###
